@@ -1,7 +1,10 @@
+"use client";
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
-import React from 'react'
+import React from "react";
 
 export default function Navbar() {
+  const { user, logOut } = useAuth();
   const links = (
     <>
       <li>
@@ -21,6 +24,16 @@ export default function Navbar() {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    logOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -57,11 +70,35 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link href={"/login"} className="btn">
-          Login
-        </Link>
+        {user ? (
+          <div className="dropdown">
+            
+            <div tabIndex={0} role="button" className="btn btn-ghost">
+              {user?.email}
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <Link href={"/dashboard/addCourse"}>Add Course</Link>
+              </li>
+              <li>
+                <Link href={"/dashboard/manageCourse"}>Manage Course</Link>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="btn btn-ghost">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link href={"/login"} className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
 }
-

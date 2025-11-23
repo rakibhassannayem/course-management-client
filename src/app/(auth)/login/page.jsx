@@ -1,7 +1,9 @@
 "use client";
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
+import SocialLogin from "../socialLogin/page";
 
 export default function Login() {
   const {
@@ -10,12 +12,21 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
+  const { signInUser } = useAuth();
+
   const handleLogin = (data) => {
-    console.log(data);
+    signInUser(data.email, data.password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-      <form onSubmit={handleSubmit(handleLogin)} className="card-body">
+      <form onSubmit={handleSubmit(handleLogin)} className="card-body py-2">
         <h3 className="text-3xl text-center font-bold">Login</h3>
         <fieldset className="fieldset">
           {/* email */}
@@ -39,7 +50,9 @@ export default function Login() {
             placeholder="Password"
           />
           {errors.password?.type === "minLength" && (
-            <p className="text-red-500">Password must be 6 characters or longer</p>
+            <p className="text-red-500">
+              Password must be 6 characters or longer
+            </p>
           )}
 
           <div>
@@ -55,6 +68,7 @@ export default function Login() {
           </Link>
         </p>
       </form>
+      <SocialLogin />
     </div>
   );
 }

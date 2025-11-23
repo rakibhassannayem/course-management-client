@@ -1,19 +1,45 @@
-import Link from "next/link";
-import React from "react";
+"use client";
+import CourseCard from "@/components/CourseCard";
+import Skeleton from "@/components/Skeleton";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+import React, { useEffect, useState } from "react";
 
-export default async function Courses() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await res.json();
+export default function Courses() {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
-  console.log(data);
+  useEffect(() => {
+    axiosSecure("/courses")
+      .then((res) => {
+        setCourses(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [axiosSecure]);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-4 gap-8">
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+        <Skeleton />
+      </div>
+    );
+  }
   return (
-    <div className="flex flex-col">
-      All Courses -
-      {data.map((user) => (
-        <Link key={user.id} href={`/courses/${user.id}`}>
-          {user.name}
-        </Link>
-      ))}
+    <div>
+      <h1 className="text-2xl font-extrabold text-secondary mb-5">Total Courses: {courses.length}</h1>
+      <div className="grid grid-cols-3 gap-5">
+        {courses.map((course) => (
+          <CourseCard course={course} key={course._id} />
+        ))}
+      </div>
     </div>
   );
 }
