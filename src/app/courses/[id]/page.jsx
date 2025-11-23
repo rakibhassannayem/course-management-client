@@ -1,11 +1,6 @@
-import React from 'react';
+import React from "react";
 
-const page = () => {
-  return (
-    <div>
-      Details of product - 
-    </div>
-  );
-};
-
-export default page;
+export default async function page({ params }) {
+  const { id } = await params;
+  return <div>Details of product - {id}</div>;
+}

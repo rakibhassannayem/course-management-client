@@ -1,11 +1,14 @@
-import React from 'react';
+import Link from 'next/link'
+import React from 'react'
 
-const page = () => {
+export default function page() {
   return (
-    <div>
-      Courses
-    </div>
-  );
-};
+    <div className='flex flex-col'>
+      All Courses -
 
-export default page;
+      <Link href={'/courses/1'}>Course 1</Link>
+      <Link href={'/courses/2'}>Course 2</Link>
+
+    </div>
+  )
+}
