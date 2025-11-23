@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default async function courses() {
+export default async function Courses() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
 

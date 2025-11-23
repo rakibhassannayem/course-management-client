@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export default function about() {
+export default function About() {
   console.log('about')
   return (
     <div>
