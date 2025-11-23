@@ -1,14 +1,19 @@
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function page() {
+export default async function courses() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await res.json();
+
+  console.log(data);
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       All Courses -
-
-      <Link href={'/courses/1'}>Course 1</Link>
-      <Link href={'/courses/2'}>Course 2</Link>
-
+      {data.map((user) => (
+        <Link key={user.id} href={`/courses/${user.id}`}>
+          {user.name}
+        </Link>
+      ))}
     </div>
-  )
+  );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 
-export default async function page({ params }) {
+export default async function details({ params }) {
   const { id } = await params;
-  return <div>Details of product - {id}</div>;
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  const data = await res.json();
+  return <div>Details of product - {data.name}</div>;
 }

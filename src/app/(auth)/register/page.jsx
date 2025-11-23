@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function page() {
+export default function register() {
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
       <form className="card-body">

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import React from "react";
+import React from 'react'
 
-const Navbar = () => {
+export default function Navbar() {
   const links = (
     <>
       <li>
@@ -63,6 +63,5 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Navbar;

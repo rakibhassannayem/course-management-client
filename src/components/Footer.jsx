@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4">
       <aside className="grid-flow-col items-center">
@@ -53,7 +53,5 @@ const Footer = () => {
         </a>
       </nav>
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}
