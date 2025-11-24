@@ -2,7 +2,10 @@
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 import React from "react";
-import { TbCircleLetterNFilled } from "react-icons/tb";
+
+import { TbCircleDashedLetterE } from "react-icons/tb";
+import { TbCircleDashedLetterJ } from "react-icons/tb";
+import { TbCircleDashedLetterP } from "react-icons/tb";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
@@ -63,9 +66,16 @@ export default function Navbar() {
             {links}
           </ul>
         </div>
-        <Link href={"/"} className="btn btn-ghost text-primary text-xl font-bold">
-          <TbCircleLetterNFilled size={34}  />
-          Nexus
+        <Link
+          href={"/"}
+          className="btn btn-ghost text-xl text-secondary font-bold"
+        >
+          <div className="flex text-primary">
+            <TbCircleDashedLetterE size={22} />
+            <TbCircleDashedLetterJ size={22} />
+            <TbCircleDashedLetterP size={22} />
+          </div>
+          Course
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -74,9 +84,8 @@ export default function Navbar() {
       <div className="navbar-end">
         {user ? (
           <div className="dropdown">
-            
             <div tabIndex={0} role="button" className="btn btn-ghost">
-              {user?.email}
+              {user?.displayName}
             </div>
             <ul
               tabIndex="-1"
