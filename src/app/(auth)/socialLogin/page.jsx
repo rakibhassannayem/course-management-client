@@ -1,17 +1,21 @@
 "use client";
 import useAuth from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { toast } from "react-toastify";
 
 export default function SocialLogin() {
+  const router = useRouter();
   const { signInGoogle } = useAuth();
 
   const handleGoogleButton = () => {
     signInGoogle()
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        toast.success("Login successful!");
+        router.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.code);
       });
   };
 

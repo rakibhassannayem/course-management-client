@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <div className="container mx-auto my-5">{children}</div>
           <Footer />
-          <ToastContainer autoClose="500" />
+          <ToastContainer autoClose="1500" />
         </body>
       </AuthProvider>
     </html>

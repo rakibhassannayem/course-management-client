@@ -132,7 +132,7 @@ export default function Contact() {
               <label className="block text-sm font-medium mb-1">Message</label>
               <textarea
                 name="Message"
-                rows="5"
+                rows="2"
                 required
                 className="w-full rounded-md border-gray-200 shadow-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Tell us how we can help..."

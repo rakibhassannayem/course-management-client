@@ -4,8 +4,11 @@ import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../socialLogin/page";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Register() {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -16,11 +19,12 @@ export default function Register() {
 
   const handleRegister = (data) => {
     registerUser(data.email, data.password)
-      .then((res) => {
-        console.log(res.user);
+      .then(() => {
+        router.push('/')
+        toast.success("Registration Successfull!")
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.code)
       });
   };
 
@@ -59,11 +63,11 @@ export default function Register() {
             <a className="link link-hover">Forgot password?</a>
           </div>
 
-          <button className="btn btn-neutral mt-4">Register</button>
+          <button className="btn btn-primary text-white mt-4">Register</button>
         </fieldset>
         <p>
           Already have an account?{" "}
-          <Link className="text-blue-400 underline" href={"/login"}>
+          <Link className="text-blue-400 underline font-semibold" href={"/login"}>
             Login
           </Link>
         </p>

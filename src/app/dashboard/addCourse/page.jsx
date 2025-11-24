@@ -2,6 +2,7 @@
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function AddCourse() {
   const {
@@ -15,11 +16,11 @@ export default function AddCourse() {
   const handleAddCourse = (data) => {
     axiosSecure
       .post("/courses", data)
-      .then((res) => {
-        console.log('after adding',res.data);
+      .then(() => {
+        toast.success("Course added successfully!");
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(err.code);
       });
   };
   return (

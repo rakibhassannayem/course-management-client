@@ -70,14 +70,13 @@ export default function Navbar() {
           </div>
           <Link
             href={"/"}
-            className="btn btn-ghost text-xl text-secondary font-bold"
+            className="btn hover:bg-primary text-primary hover:text-white text-xl font-bold  p-2 rounded-full"
           >
-            <div className="flex text-primary">
-              <TbCircleDashedLetterE size={22} />
-              <TbCircleDashedLetterJ size={22} />
-              <TbCircleDashedLetterP size={22} />
+            <div className="flex">
+              <TbCircleDashedLetterE size={30} />
+              <TbCircleDashedLetterJ size={30} />
+              <TbCircleDashedLetterP size={30} />
             </div>
-            Course
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
