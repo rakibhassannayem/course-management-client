@@ -22,7 +22,7 @@ export default function Courses() {
 
   if (loading) {
     return (
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <Skeleton />
         <Skeleton />
         <Skeleton />
@@ -34,8 +34,9 @@ export default function Courses() {
   }
   return (
     <div>
-      <h1 className="text-2xl font-extrabold text-secondary mb-5">Total Courses: {courses.length}</h1>
-      <div className="grid grid-cols-3 gap-5">
+      <h1 className="text-4xl font-bold text-secondary mb-1">Explore Our Courses</h1>
+      <p className="text-accent text-xl mb-5">Discover Thousands of courses taught by expert instructors</p>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {courses.map((course) => (
           <CourseCard course={course} key={course._id} />
         ))}

@@ -2,6 +2,7 @@
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 import React from "react";
+import { TbCircleLetterNFilled } from "react-icons/tb";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
@@ -62,8 +63,9 @@ export default function Navbar() {
             {links}
           </ul>
         </div>
-        <Link href={"/"} className="btn btn-ghost text-xl">
-          LOGO
+        <Link href={"/"} className="btn btn-ghost text-primary text-xl font-bold">
+          <TbCircleLetterNFilled size={34}  />
+          Nexus
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
