@@ -1,10 +1,12 @@
 "use client";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function AddCourse() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,10 +16,12 @@ export default function AddCourse() {
   const axiosSecure = useAxiosSecure();
 
   const handleAddCourse = (data) => {
+    console.log(data);
     axiosSecure
       .post("/courses", data)
       .then(() => {
         toast.success("Course added successfully!");
+        router.push("/courses");
       })
       .catch((err) => {
         toast.error(err.code);
@@ -76,6 +80,23 @@ export default function AddCourse() {
             <p className="text-red-500">Price is required</p>
           )}
 
+          {/* Priority */}
+          <label className="label">Priority</label>
+          <select
+            defaultValue="Select Priority"
+            className="select"
+            {...register("priority", { required: true })}
+          >
+            <option disabled={true}>Select Priority</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+
+          {errors.priority?.type === "required" && (
+            <p className="text-red-500">Priority is required</p>
+          )}
+
           {/* Photo url */}
           <label className="label">Photo URL</label>
           <input
@@ -84,8 +105,9 @@ export default function AddCourse() {
             className="input"
             placeholder="Photo URL(optional)"
           />
-
-          <button className="btn btn-neutral mt-4">Add Course</button>
+          <button className="btn btn-primary text-white mt-4">
+            Add Course
+          </button>
         </fieldset>
       </form>
     </div>
