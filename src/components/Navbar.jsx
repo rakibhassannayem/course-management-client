@@ -6,25 +6,26 @@ import React from "react";
 import { TbCircleDashedLetterE } from "react-icons/tb";
 import { TbCircleDashedLetterJ } from "react-icons/tb";
 import { TbCircleDashedLetterP } from "react-icons/tb";
+import NavLink from "./NavLink";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
   const links = (
     <>
       <li>
-        <Link href={"/"}>Home</Link>
+        <NavLink href={"/"}>Home</NavLink>
       </li>
       <li>
-        <Link href={"/courses"}>Courses</Link>
+        <NavLink href={"/courses"}>Courses</NavLink>
       </li>
       <li>
-        <Link href={"/pricing"}>Pricing</Link>
+        <NavLink href={"/pricing"}>Pricing</NavLink>
       </li>
       <li>
-        <Link href={"/about"}>About</Link>
+        <NavLink href={"/about"}>About</NavLink>
       </li>
       <li>
-        <Link href={"/contact"}>Contact</Link>
+        <NavLink href={"/contact"}>Contact</NavLink>
       </li>
     </>
   );
@@ -101,10 +102,10 @@ export default function Navbar() {
                 className="menu menu-md dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow space-y-1"
               >
                 <li>
-                  <Link href={"/dashboard/addCourse"}>Add Course</Link>
+                  <NavLink href={"/dashboard/addCourse"}>Add Course</NavLink>
                 </li>
                 <li>
-                  <Link href={"/dashboard/manageCourse"}>Manage Course</Link>
+                  <NavLink href={"/dashboard/manageCourse"}>Manage Course</NavLink>
                 </li>
                 <li>
                   <button
