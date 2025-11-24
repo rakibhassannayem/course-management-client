@@ -6,7 +6,6 @@ import {
   Clock,
   TrendingUp,
   Star,
-  Check,
 } from "lucide-react";
 import { FaStar } from "react-icons/fa";
 
