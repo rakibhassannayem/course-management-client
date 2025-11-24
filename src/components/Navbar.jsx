@@ -40,8 +40,8 @@ export default function Navbar() {
       });
   };
   return (
-    <div className="navbar bg-base-100 shadow-sm sticky top-0 z-999">
-      <div className="container mx-auto flex flex-col sm:flex-row">
+    <div className="bg-base-100 shadow-sm sticky top-0 z-999">
+      <div className="container mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -104,7 +104,9 @@ export default function Navbar() {
                   <NavLink href={"/dashboard/addCourse"}>Add Course</NavLink>
                 </li>
                 <li>
-                  <NavLink href={"/dashboard/manageCourse"}>Manage Course</NavLink>
+                  <NavLink href={"/dashboard/manageCourse"}>
+                    Manage Course
+                  </NavLink>
                 </li>
                 <li>
                   <button
@@ -117,9 +119,14 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <Link href={"/login"} className="btn">
-              Login
-            </Link>
+            <div className="flex gap-2">
+              <Link href={"/login"} className="btn btn-primary text-white">
+                Login
+              </Link>
+              <Link href={"/register"} className="btn">
+                Register
+              </Link>
+            </div>
           )}
         </div>
       </div>
