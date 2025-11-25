@@ -33,7 +33,7 @@ export default function ManageCourse() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/courses/${_id}`, {
+        fetch(`https://course-management-server-lyart.vercel.app/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
