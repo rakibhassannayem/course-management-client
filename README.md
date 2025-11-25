@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Course Management Client
 
-## Getting Started
+Short description
+-----------------
+A Next.js + React client for a course management site. Uses Firebase Authentication for user sign-in, Tailwind + DaisyUI for styling, and Axios for server API calls. Live demo: https://course-management-client-nhdq.vercel.app/
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Setup & installation (Windows)
+------------------------------
+1. Clone repository and open the project folder:
+   - git clone <your-repo>
+   - cd "d:\phProjects\NEXT JS\course-management-client"
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   - npm install
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+3. Add environment variables required by Firebase (create a .env.local at project root):
+   - NEXT_PUBLIC_FIREBASE_API_KEY=...
+   - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+   - NEXT_PUBLIC_FIREBASE_PROJECT_ID=...
+   - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=...
+   - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=...
+   - NEXT_PUBLIC_FIREBASE_APP_ID=...
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   The Firebase config is loaded in [src/lib/firebase.config.js](src/lib/firebase.config.js).
 
-## Learn More
+4. Start development server:
+   - npm run dev
+   - Open http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
+Build & production
+- Build: npm run build
+- Start (production): npm start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Notes
+- The client expects a backend API. The Axios base URL is set in [src/hooks/useAxiosSecure.jsx](src/hooks/useAxiosSecure.jsx) (currently: https://course-management-server-lyart.vercel.app). Update if you run your own server.
+- Authentication flows use Firebase auth implemented in [`AuthProvider`](src/context/AuthProvider.jsx). Ensure the Firebase env vars are correct.
+- There is a checkout route referenced in UI links but no checkout page scaffold in this repo — create [src/app/checkout/page.jsx] if you need server-side payment flows.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Route summary
+-------------
+- /               → [src/app/page.jsx](src/app/page.jsx)
+- /courses        → [src/app/courses/page.jsx](src/app/courses/page.jsx)
+- /courses/[id]   → [src/app/courses/[id]/page.jsx](src/app/courses/[id]/page.jsx)
+- /pricing        → [src/app/pricing/page.jsx](src/app/pricing/page.jsx)
+- /contact        → [src/app/contact/page.jsx](src/app/contact/page.jsx)
+- /about          → [src/app/about/page.jsx](src/app/about/page.jsx)
+- /login          → [src/app/(auth)/login/page.jsx](src/app/(auth)/login/page.jsx)
+- /register       → [src/app/(auth)/register/page.jsx](src/app/(auth)/register/page.jsx)
+- /(auth)/socialLogin → [src/app/(auth)/socialLogin/page.jsx](src/app/(auth)/socialLogin/page.jsx)
+- /dashboard      → [src/app/dashboard/layout.jsx](src/app/dashboard/layout.jsx) (protected; uses `AuthProvider`)
+  - /dashboard/addCourse    → [src/app/dashboard/addCourse/page.jsx](src/app/dashboard/addCourse/page.jsx)
+  - /dashboard/manageCourse → [src/app/dashboard/manageCourse/page.jsx](src/app/dashboard/manageCourse/page.jsx)
 
-## Deploy on Vercel
+Useful commands
+---------------
+- npm run dev — run dev server (Windows: run in PowerShell or cmd)
+- npm run build — build production
+- npm start — start built app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contact / live demo
+-------------------
+Live site: https://course-management-client-nhdq.vercel.app/
