@@ -3,7 +3,7 @@ import React from "react";
 
 export default function useAxiosSecure() {
   const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://course-management-server-lyart.vercel.app",
   });
   return axiosSecure;
 }

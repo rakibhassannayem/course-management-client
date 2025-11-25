@@ -3,7 +3,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 export default async function details({ params }) {
   const { id } = await params;
-  const res = await fetch(`http://localhost:5000/courses/${id}`);
+  const res = await fetch(`https://course-management-server-lyart.vercel.app/courses/${id}`);
   const course = await res.json();
 
   const { title, imageUrl, fullDescription, price, priority } = course;
