@@ -66,14 +66,14 @@ export default function ManageCourse() {
     );
   }
   return (
-    <div>
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 ">
+    <div className="px-3">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
         <div>
           <h1 className="text-4xl font-bold text-secondary mb-1">
             Manage Courses
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row gap-2">
+        <div className="flex flex-col md:flex-row gap-2 ">
           {/* Search */}
           <label className="input">
             <svg
@@ -133,7 +133,7 @@ export default function ManageCourse() {
                   </div>
                 </td>
                 <td>
-                  <span className="badge badge-primary font-bold text-white">
+                  <span className="badge badge-outline font-bold py-5">
                     $ {course.price}
                   </span>
                 </td>

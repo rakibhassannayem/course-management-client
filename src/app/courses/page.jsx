@@ -33,7 +33,7 @@ export default function Courses() {
     );
   }
   return (
-    <div>
+    <div className="px-3">
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 ">
         <div>
           <h1 className="text-4xl font-bold text-secondary mb-1">

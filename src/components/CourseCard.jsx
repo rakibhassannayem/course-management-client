@@ -24,7 +24,7 @@ export default function CourseCard({ course }) {
           {price} $
         </span>
         <div className="card-actions justify-end">
-          <Link href={`/courses/${_id}`} className="btn btn-primary">
+          <Link href={`/courses/${_id}`} className="btn btn-primary text-white">
             View Details
           </Link>
         </div>
