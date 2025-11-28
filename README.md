@@ -2,7 +2,7 @@
 
 Short description
 -----------------
-A Next.js + React client for a course management site. Uses Firebase Authentication for user sign-in, Tailwind + DaisyUI for styling, and Axios for server API calls. Live demo: https://course-management-client-nhdq.vercel.app/
+A Next.js + React client for a course management site. Uses Firebase Authentication for user sign-in, Tailwind + DaisyUI for styling, and Axios for server API calls. Live demo: [https://course-management-client-nhdq.vercel.app/](https://course-management-client-delta.vercel.app/)
 
 
 Setup & installation (Windows)
@@ -60,4 +60,4 @@ Useful commands
 
 Contact / live demo
 -------------------
-Live site: https://course-management-client-nhdq.vercel.app/
+Live site: [https://course-management-client-nhdq.vercel.app/](https://course-management-client-delta.vercel.app/)
